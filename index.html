@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Food Decoder</title>
+
+    <!-- FONT AWESOME -->
+    <script src="https://kit.fontawesome.com/623c9b3b2b.js"></script>
 
     <!-- LINK TO JQUERY CDN -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -20,6 +22,8 @@
     <!-- LINK TO EXTERNAL STYLESHEET -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
+    <title>Food Decoder</title>
+
 
 </head>
 
@@ -27,17 +31,23 @@
     <!-- NAV BAR -->
 
     <nav>
-            <div class="nav-wrapper">
-              <a href="#" class="brand-logo">Food Decoder</a>
-              <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Food Decoder</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="about.html">About Us</a></li>
-              </ul>
-            </div>
-          </nav>
+            </ul>
+        </div>
+    </nav>
+
 
 
     <div class="container">
         <!-- PAGE CONTENT GOES HERE -->
+
+        <form class="searchBar" action="/action_page.php">
+            <input type="text" placeholder="Search product here.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
 
 
 
