@@ -1,0 +1,19 @@
+body {
+    /* max-width: 960px; */
+    margin: auto;
+    
+}
+
+.container {
+    margin: 0 auto;
+    width: 90%;
+}
+
+.brand-logo {
+    margin-left: 15px;
+}
+
+.card {
+    margin-top: 80px;
+}
+
