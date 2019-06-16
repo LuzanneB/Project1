@@ -17,3 +17,24 @@ body {
     margin-top: 80px;
 }
 
+#headerImg{
+     box-sizing: border-box;
+     width: 100%;
+     margin-top: 20px;
+}
+
+#user-input{
+    width:50%;
+     }
+
+.relative{
+    position:relative;  
+}
+
+.absolute{
+    position: absolute;
+    left:400px;
+    bottom: 60px;
+    z-index: 5000;
+    width: 60%;
+}

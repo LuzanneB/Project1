@@ -39,18 +39,20 @@
         </div>
     </nav>
 
-
-
-<<<<<<< HEAD
+   
     <div class="container">
         <!-- PAGE CONTENT GOES HERE -->
-
-        <form class="searchBar" action="/action_page.php">
-            <input type="text" placeholder="Search product here.." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
-
-
+        <!-- background image -->
+        <div class="relative">
+            <img src="assets/images/foodheaderbg-cropped.png" alt="header image of aisle" id="headerImg" class="z-depth-5">
+       <!-- input bar -->
+        <div class="absolute">
+            <form class="searchBar" action="/action_page.php">
+                <input type="text" id="user-input" placeholder="Search product here.." name="search">
+                <button class="btn waves-effect waves-light" id="search" type="submit" name="action">Search</button>                   
+            </form>
+        </div>
+    </div>
 
         <!-- PAGE CONTENT ENDS HERE -->
     </div>
@@ -67,6 +69,7 @@
 
     <!-- LINK TO EXTERNAL JS -->
     <script src="assets/javascript/app.js"></script>
+
 </body>
 
 </html>
