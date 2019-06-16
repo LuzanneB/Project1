@@ -2,8 +2,14 @@ body {
     /* max-width: 960px; */
     margin: auto;
     background: url(../images/white_brick_wall.png);
-    
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
+
+main {
+    flex: 1 0 auto;
+  }
 
 .container {
     margin: 0 auto;
@@ -29,13 +35,6 @@ body {
     width: 600px;
     display: block;
     margin: 0 auto;
-}
-
-.page-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
 }
 
 .foodResults {
