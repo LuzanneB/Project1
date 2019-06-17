@@ -3,6 +3,8 @@ $(document).ready(function () {
     console.log("Lets Go!");
     // creates hover tool tip on footer
     $('.tooltipped').tooltip();
+    // initializes modal
+    $('.modal').modal();
     // initializes collapse
     $('.collapsible').collapsible();
     // all code must be after this line
