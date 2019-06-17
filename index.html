@@ -9,6 +9,9 @@
     <!-- FONT AWESOME -->
     <script src="https://kit.fontawesome.com/623c9b3b2b.js"></script>
 
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700&display=swap" rel="stylesheet">
+
     <!-- LINK TO JQUERY CDN -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -29,35 +32,48 @@
 
 <body>
     <!-- NAV BAR -->
-
+<header>
     <nav>
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo">Food Decoder</a>
+        <div class="nav-wrapper light-green lighten-5">
+            <a href="#" class="brand-logo teal-text text-lighten-3">Food Decoder</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="about.html">About Us</a></li>
+                <li><a class="teal-text text-lighten-3" href="aboutus.html">About Us</a></li>
             </ul>
         </div>
     </nav>
+</header>
 
-
-
-<<<<<<< HEAD
+<main>
     <div class="container">
         <!-- PAGE CONTENT GOES HERE -->
+    
+        <!-- BACKGROUND IMAGE -->
+        <img class="headerImg responsive-img" src="assets/images/decoder-ring.png" width="700">
 
+        <!-- INPUT BAR -->
         <form class="searchBar" action="/action_page.php">
-            <input type="text" placeholder="Search product here.." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
+            <input type="text" id="user-input" placeholder="Search product here.." name="search">
+            <button class="btn waves-effect waves-light" id="search" type="submit" name="action">Search</button>
         </form>
 
+        <!-- SEARCH RESULTS -->
 
+        <div class="foodResults">
+            <span class="spacer"><br>This is a spacer that represents where the search results will populate<br><br></span>
+            <div class="foodItem">
+
+
+            </div>
+
+        </div>
 
         <!-- PAGE CONTENT ENDS HERE -->
     </div>
+</main>
 
     <!-- FOOTER -->
 
-    <footer class="page-footer">
+    <footer class="page-footer light-green lighten-3">
         <div class="footer-copyright">
             <div class="container center">
                 © 2019 Copyright C.L.A.N.
