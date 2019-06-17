@@ -31,12 +31,6 @@ main {
     margin: 20px auto 0 auto;
 }
 
-.searchBar {
-    width: 600px;
-    display: block;
-    margin: 0 auto;
-}
-
 
 .foodItem{
     background-color: whitesmoke;
@@ -51,4 +45,10 @@ main {
 .person {
     position: relative;
     display: inline;
+}
+
+#user-input {
+    width: 40%;
+    margin: 20px auto 0 auto;
+    position: relative;
 }
