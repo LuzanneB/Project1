@@ -1,6 +1,7 @@
 // ensure document is ready and log it
 $(document).ready(function () {
     console.log("Lets Go!");
+    var respObj;
     // creates hover tool tip on footer
     $('.tooltipped').tooltip();
     // initializes collapse
@@ -41,7 +42,7 @@ $(document).ready(function () {
             }).then(function (resp) {
                 //get the response
                 console.log(resp);
-                
+                respObj = resp;
                 //display doms
                 for(var i = 0;i <10; i++){
                     
@@ -63,7 +64,9 @@ $(document).ready(function () {
                     newHeader.append(icon,foodBrand);
                     let newBody = $("<div>");
                     newBody.addClass("collapsible-body");
+                    newBody.attr("id",i);
                     let foodImage = $("<img>");//not styled
+                    foodImage.attr("value",i);
                     //img and without image
                     if(food.image_front_thumb_url){
                         foodImage.attr("src",food.image_front_thumb_url);
@@ -98,13 +101,23 @@ $(document).ready(function () {
 
     });
     //create function to show pop up images
-    //$(document).on("click",".img",function(){
-    //modal.img.attr("src",ingredientsImage);
-    //});
-    //create function for pop up modals 
-    // $(document).on("click","",function(){
+    $(document).on("mouseover","img",function(){
 
-    // });
+          let index = $(this).attr("value");
+          //image_ingredients_url
+          let newImg = $("<img>");
+          if(respObj.products[index].image_ingredients_url){
+            newImg.attr("src",respObj.products[index].image_ingredients_url);
+          }else{
+            newImg.attr("src","./assets/images/no-image-available.png");
+          }
+          
+        $("#"+index).append(newImg);
+    });
+    //create function for pop up modals 
+    //  $(document).on("click","",function(){
+
+    //  });
     //  
     //create function to link ingredients text to wiki
     // $(document).on("click","(the content in modals)",function(){
