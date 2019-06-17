@@ -24,6 +24,7 @@ $(document).ready(function () {
     // }
     $("#search").click(function (e) {
         e.preventDefault();
+        $(".foodResults").empty();  
         foodName = $("#user-input").val();
         if (foodName !== "") {
             //input is not empty 
@@ -45,6 +46,9 @@ $(document).ready(function () {
                     // newDiv.text(resp.products[i].product_name);
                     // $("body").append(newDiv);
                     let food = resp.products[i];
+                    if(food.ingredients == ""){
+                        continue;
+                    }
                     let newRow = $("<div>");
                     newRow.addClass("row");
                     let newColImg =$("<div>");
@@ -52,7 +56,12 @@ $(document).ready(function () {
                     let newColText = $("<div>");
                     newColText.addClass("col-md-6");
                     let foodImage = $("<img>");
-                    foodImage.attr("src",food.image_front_thumb_url);
+                    if(food.image_front_thumb_url){
+                        foodImage.attr("src",food.image_front_thumb_url);
+                    }else{
+                        foodImage.attr("src","");
+                        foodImage.attr("alt","some image");
+                    }
                     let foodIngre = $("<p>");
                     foodIngre.text(food.brands +" "+food.product_name+"Ingredients: "+food.ingredients);
                     newColImg.append(foodImage);
