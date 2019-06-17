@@ -28,7 +28,7 @@ $(document).ready(function () {
     // }
     $("#search").click(function (e) {
         e.preventDefault();
-        //$(".foodItem").empty();  
+        $(".foodItem").empty();  
         foodName = $("#user-input").val();
         if (foodName !== "") {
             //input is not empty 
