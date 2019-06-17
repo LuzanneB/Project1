@@ -62,10 +62,19 @@ $(document).ready(function () {
                         foodImage.attr("src","");
                         foodImage.attr("alt","some image");
                     }
+                    //let foodIngre = $("<p>");
+                    //foodIngre.text(food.brands +" "+food.product_name+"Ingredients: "+food.ingredients);
+                    let foodBrand = $("<p>");
+                    foodBrand.text(food.brands +" "+food.product_name);
                     let foodIngre = $("<p>");
-                    foodIngre.text(food.brands +" "+food.product_name+"Ingredients: "+food.ingredients);
+                    let ingre ="";
+                    for (var j=0;j<food.ingredients_original_tags.length;j++){
+                        let ingreArr = food.ingredients_original_tags[j].split(":");
+                        ingre += ingreArr[1]+ " | ";
+                    }
+                    foodIngre.text(ingre);
                     newColImg.append(foodImage);
-                    newColText.append(foodIngre);
+                    newColText.append(foodBrand, foodIngre);
                     newRow.append(newColImg,newColText);
                     $(".foodResults").append(newRow);
                 }
