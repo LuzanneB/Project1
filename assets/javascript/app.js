@@ -59,8 +59,11 @@ $(document).ready(function () {
                     icon.addClass("material-icons");
                     icon.text("add_circle_outline");
                     let foodBrand = $("<span>");
-                    foodBrand.text(food.brands +" "+food.product_name);
-                    newHeader.append(icon,foodBrand);
+                    foodBrand.addClass("brands");
+                    let name = $("<span>");
+                    foodBrand.text(food.brands);
+                    name.text(" : "+food.product_name);
+                    newHeader.append(icon,foodBrand,name);
                     let newBody = $("<div>");
                     newBody.addClass("collapsible-body");
                     let foodImage = $("<img>");//not styled
@@ -77,10 +80,9 @@ $(document).ready(function () {
                     for(var j=0;j<food.ingredients_original_tags.length;j++){
                         let ingreArr = food.ingredients_original_tags[j].split(":");
                         let ingreSpan = $("<span>");
-                        ingreSpan.text(ingreArr[1]);
+                        ingreSpan.text(ingreArr[1]+"|");
                         newIngreDiv.append(ingreSpan);
                         console.log(ingreSpan);
-                        
                     }
                     newBody.append(newIngreDiv);
                     console.log(newBody);
@@ -96,6 +98,19 @@ $(document).ready(function () {
             $("#user-input").val("");
         }
 
+    });
+    $(document).on("click",".brands",function(){
+        let key = $(this).text().toLowerCase();
+        //may need to format the key
+        console.log(key);
+        
+        $.ajax({
+            method :"GET",
+            url : cors_api_url + "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch="+key+"&format=json"
+        }).then(function(resp){
+            console.log(resp);
+            //pop up modals
+        });
     });
     //create function to show pop up images
     //$(document).on("click",".img",function(){
