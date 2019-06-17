@@ -1,6 +1,6 @@
 # Food Decoder
 
-Independence Day (United States) is around the corner and you know what that means..no not the fireworks..I'm talking about having that **summer-time barbecue!** :poultry_leg: :hamburger:
+Independence Day (United States) is around the corner and you know what that means..no not the fireworks..I'm talking about having that **summertime barbecue!** :poultry_leg: :hamburger:
 
 You are at your local supermarket and what is a barbecue without hot dogs? You head to the meat section and with great delight, you immediately noticed a holiday sale on your favorite brand of beef franks! You picked up the package with the right amount of franks in the package, but then you noticed that the sale was for the smaller pack. You head back to pick up the smaller package, but then you noticed that the packaging looks a bit different...Out of curiosity, you checked the nutritional label to see what makes this product different from the one you originally wanted. 
 
