@@ -63,8 +63,8 @@ $(document).ready(function () {
                     if(food.image_front_thumb_url){
                         foodImage.attr("src",food.image_front_thumb_url);
                     }else{
-                        foodImage.attr("src","");
-                        foodImage.attr("alt","some image");
+                        foodImage.attr("src","./assets/images/no-image-available.png");
+                        foodImage.attr("alt","No Image Available");
                     }
                     //let foodIngre = $("<p>");
                     //foodIngre.text(food.brands +" "+food.product_name+"Ingredients: "+food.ingredients);
