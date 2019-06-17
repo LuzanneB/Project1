@@ -37,9 +37,8 @@ main {
     margin: 0 auto;
 }
 
-.foodResults {
-    border: solid lightgrey 1px;
-    border-radius: 5px;
+
+.foodItem{
     background-color: whitesmoke;
     margin-top: 35px;
 }
