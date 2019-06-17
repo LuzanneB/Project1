@@ -44,6 +44,21 @@ $(document).ready(function () {
                     // let newDiv = $("<div>");
                     // newDiv.text(resp.products[i].product_name);
                     // $("body").append(newDiv);
+                    let food = resp.products[i];
+                    let newRow = $("<div>");
+                    newRow.addClass("row");
+                    let newColImg =$("<div>");
+                    newColImg.addClass("col-md-3");
+                    let newColText = $("<div>");
+                    newColText.addClass("col-md-6");
+                    let foodImage = $("<img>");
+                    foodImage.attr("src",food.image_front_thumb_url);
+                    let foodIngre = $("<p>");
+                    foodIngre.text(food.brands +" "+food.product_name+"Ingredients: "+food.ingredients);
+                    newColImg.append(foodImage);
+                    newColText.append(foodIngre);
+                    newRow.append(newColImg,newColText);
+                    $(".foodResults").append(newRow);
                 }
 
             });
