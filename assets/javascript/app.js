@@ -28,7 +28,7 @@ $(document).ready(function () {
     // }
     $("#search").click(function (e) {
         e.preventDefault();
-        $(".foodResults").empty();  
+        //$(".foodItem").empty();  
         foodName = $("#user-input").val();
         if (foodName !== "") {
             //input is not empty 
@@ -44,43 +44,51 @@ $(document).ready(function () {
                 
                 //display doms
                 for(var i = 0;i <10; i++){
-                    //loop 10 times in the json
-                    //test example
-                    // let newDiv = $("<div>");
-                    // newDiv.text(resp.products[i].product_name);
-                    // $("body").append(newDiv);
+                    
                     let food = resp.products[i];
                     if(food.ingredients == ""){
                         continue;
                     }
-                    let newRow = $("<div>");
-                    newRow.addClass("row");
-                    let newColImg =$("<div>");
-                    newColImg.addClass("col-md-3");
-                    let newColText = $("<div>");
-                    newColText.addClass("col-md-6");
-                    let foodImage = $("<img>");
+                    //new li 
+                    let newLi = $("<li>");
+                    //new header
+                    let newHeader = $("<div>");
+                    newHeader.addClass("collapsible-header");
+                    //icpon
+                    let icon = $("<i>");
+                    icon.addClass("material-icons");
+                    icon.text("add_circle_outline");
+                    let foodBrand = $("<span>");
+                    foodBrand.text(food.brands +" "+food.product_name);
+                    newHeader.append(icon,foodBrand);
+                    let newBody = $("<div>");
+                    newBody.addClass("collapsible-body");
+                    let foodImage = $("<img>");//not styled
+                    //img and without image
                     if(food.image_front_thumb_url){
                         foodImage.attr("src",food.image_front_thumb_url);
                     }else{
                         foodImage.attr("src","");
                         foodImage.attr("alt","some image");
                     }
-                    //let foodIngre = $("<p>");
-                    //foodIngre.text(food.brands +" "+food.product_name+"Ingredients: "+food.ingredients);
-                    let foodBrand = $("<p>");
-                    foodBrand.text(food.brands +" "+food.product_name);
-                    let foodIngre = $("<p>");
-                    let ingre ="";
-                    for (var j=0;j<food.ingredients_original_tags.length;j++){
+                    newBody.append(foodImage);
+                    let newIngreDiv = $("<div>");
+                    //loop through ingredients array
+                    for(var j=0;j<food.ingredients_original_tags.length;j++){
                         let ingreArr = food.ingredients_original_tags[j].split(":");
-                        ingre += ingreArr[1]+ " | ";
+                        let ingreSpan = $("<span>");
+                        ingreSpan.text(ingreArr[1]);
+                        newIngreDiv.append(ingreSpan);
+                        console.log(ingreSpan);
+                        
                     }
-                    foodIngre.text(ingre);
-                    newColImg.append(foodImage);
-                    newColText.append(foodBrand, foodIngre);
-                    newRow.append(newColImg,newColText);
-                    $(".foodResults").append(newRow);
+                    newBody.append(newIngreDiv);
+                    console.log(newBody);
+                    
+                    newLi.append(newHeader,newBody);
+                    
+                    $(".foodItem").append(newLi);
+                    
                 }
 
             });
