@@ -1,6 +1,8 @@
 // ensure document is ready and log it
 $(document).ready(function () {
     console.log("Lets Go!");
+    // creates hover tool tip on footer
+    $('.tooltipped').tooltip();
     // all code must be after this line
     var foodName;
     //initial the search button action
