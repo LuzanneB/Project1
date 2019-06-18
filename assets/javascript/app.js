@@ -25,11 +25,9 @@ $(document).ready(function () {
     //     x.open("GET", newUrl,true);
     //     x.send();
     // }
+
     $("#search").click(function (e) {
-
-
         e.preventDefault();
-        $(".foodItem").empty();
         foodName = $("#user-input").val();
         if (foodName !== "") {
             //input is not empty 
@@ -46,6 +44,7 @@ $(document).ready(function () {
                 if (resp.count == 0) {//void response
                     console.log("no result found");
                 } else {
+                    $(".foodItem").empty();
                     for (var i = 0; i < 10; i++) {
                         //data-persistence
                         // let history = JSON.parse(localStorage.getItem("history"));
