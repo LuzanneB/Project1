@@ -1,8 +1,11 @@
 // ensure document is ready and log it
 $(document).ready(function () {
     console.log("Lets Go!");
+    var respObj;
     // creates hover tool tip on footer
     $('.tooltipped').tooltip();
+    // initializes modal
+    $('.modal').modal();
     // initializes collapse
     $('.collapsible').collapsible();
     // all code must be after this line
@@ -40,7 +43,9 @@ $(document).ready(function () {
             }).then(function (resp) {
                 //get the response
                 console.log(resp);
+                respObj = resp;
                 //display doms
+<<<<<<< HEAD
                 if (resp.count == 0) {//void response
                     console.log("no result found");
                 } else {
@@ -99,15 +104,57 @@ $(document).ready(function () {
 
                         $(".foodItem").append(newLi);
 
+=======
+                for(var i = 0;i <10; i++){
+                    
+                    let food = resp.products[i];
+                    if(food.ingredients == ""){
+                        continue;
+>>>>>>> master
                     }
-                }
-
+                    //new li 
+                    let newLi = $("<li>");
+                    //new header
+                    let newHeader = $("<div>");
+                    newHeader.addClass("collapsible-header");
+                    //icpon
+                    let icon = $("<i>");
+                    icon.addClass("material-icons");
+                    icon.text("add_circle_outline");
+                    let foodBrand = $("<span>");
+                    foodBrand.text(food.brands +" "+food.product_name);
+                    newHeader.append(icon,foodBrand);
+                    let newBody = $("<div>");
+                    newBody.addClass("collapsible-body");
+                    newBody.attr("id",i);
+                    let foodImage = $("<img>");//not styled
+                    foodImage.attr("value",i);
+                    //img and without image
+                    if(food.image_front_thumb_url){
+                        foodImage.attr("src",food.image_front_thumb_url);
+                    }else{
+                        foodImage.attr("src","./assets/images/no-image-available.png");
+                        foodImage.attr("alt","No Image Available");
+                    }
+                    newBody.append(foodImage);
+                    let newIngreDiv = $("<div>");
+                    //loop through ingredients array
+                    for(var j=0;j<food.ingredients_original_tags.length;j++){
+                        let ingreArr = food.ingredients_original_tags[j].split(":");
+                        let ingreSpan = $("<span>");
+                        ingreSpan.text(ingreArr[1]);
+                        newIngreDiv.append(ingreSpan);
+                        console.log(ingreSpan);
+                            }
+                                                            }
             });
             //clear the user input
             $("#user-input").val("");
         }
 
     });
+
+
     $(document).on("click", ".brands", function () {
         let key = $(this).text().toLowerCase();
         console.log(key);
@@ -120,13 +167,23 @@ $(document).ready(function () {
         });
     });
     //create function to show pop up images
-    //$(document).on("click",".img",function(){
-    //modal.img.attr("src",ingredientsImage);
-    //});
-    //create function for pop up modals 
-    // $(document).on("click","",function(){
+    $(document).on("mouseover","img",function(){
 
-    // });
+          let index = $(this).attr("value");
+          //image_ingredients_url
+          let newImg = $("<img>");
+          if(respObj.products[index].image_ingredients_url){
+            newImg.attr("src",respObj.products[index].image_ingredients_url);
+          }else{
+            newImg.attr("src","./assets/images/no-image-available.png");
+          }
+          
+        $("#"+index).append(newImg);
+    });
+    //create function for pop up modals 
+    //  $(document).on("click","",function(){
+
+    //  });
     //  
     //create function to link ingredients text to wiki
     // $(document).on("click","(the content in modals)",function(){
