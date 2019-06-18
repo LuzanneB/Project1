@@ -5,7 +5,10 @@ $(document).ready(function () {
     $('.tooltipped').tooltip();
     // initializes collapse
     $('.collapsible').collapsible();
+    // hide progress bar
+    $(".progress").hide();
     // all code must be after this line
+
     var foodName;
     //initial the search button action
     // fix CORS erro with proxy
@@ -26,7 +29,9 @@ $(document).ready(function () {
     //     x.send();
     // }
     $("#search").click(function (e) {
-        e.preventDefault();
+        $(".progress").show();
+        e.preventDefault();       
+        $(".foodItem").empty();  
         foodName = $("#user-input").val();
         if (foodName !== "") {
             //input is not empty 
@@ -95,10 +100,14 @@ $(document).ready(function () {
                         console.log(newBody);
 
                         newLi.append(newHeader, newBody);
-
+                        $(".progress").hide();
                         $(".foodItem").append(newLi);
 
                     }
+                   
+               
+              
+                    
                 }
 
             });

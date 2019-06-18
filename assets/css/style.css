@@ -52,3 +52,6 @@ main {
     margin: 20px auto 0 auto;
     position: relative;
 }
+.progress {
+    margin-top: 35px;
+}
