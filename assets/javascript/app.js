@@ -134,7 +134,9 @@ $(document).ready(function () {
     //change icon of li when clicked
     $(document).on("click","li",function(){
        if($(this).attr("class") == "active"){
+        $(".material-icons").text("add_circle_outline");
         $(this).find(".material-icons").text("remove_circle_outline");
+
        }else{
         $(this).find(".material-icons").text("add_circle_outline");
        }
