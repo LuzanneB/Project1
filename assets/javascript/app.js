@@ -5,7 +5,7 @@ $(document).ready(function () {
     $('.tooltipped').tooltip();
     // initializes collapse
     $('.collapsible').collapsible();
-    // hide progress bar
+    // hide progress bar by default
     $(".progress").hide();
     // all code must be after this line
 
@@ -47,6 +47,8 @@ $(document).ready(function () {
                 //display doms
                 if (resp.count == 0) {//void response
                     console.log("no result found");
+                    // hide the progress bar if no results
+                    $(".progress").hide();
                 } else {
                     $(".foodItem").empty();
                     for (var i = 0; i < 10; i++) {
@@ -100,6 +102,7 @@ $(document).ready(function () {
                         console.log(newBody);
 
                         newLi.append(newHeader, newBody);
+                        // hide the progress bar prior to showing results
                         $(".progress").hide();
                         $(".foodItem").append(newLi);
 
@@ -109,7 +112,7 @@ $(document).ready(function () {
               
                     
                 }
-
+g
             });
             //clear the user input
             $("#user-input").val("");
