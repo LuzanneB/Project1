@@ -1,9 +1,9 @@
-- Landing Page
-- Demo
-- Built With
-- Usage
-- Team
-- License
+- [Landing Page](#landing-page)
+- [Demo](#demo)
+- [Built With](#built-with)
+- [Usage](#usage)
+- [Team](#team)
+- [License](#license)
 
 
 # Food Decoder
@@ -21,18 +21,18 @@ As your stream of thoughts guided you through a rabbit hole of questions and, ev
 <!-- Add explanation why we came up with app -->
 
 
-## [Landing Page](#landing-page)
+## Landing Page
 ![Food Decoder screenshot](Project1\assets\images\foodDecodermain.jpg)
 
 
-## [Demo](#demo)
+## Demo
 
 <!-- .gif preview of capabilities and process -->
 
 <!-- Explain how to use it -->
 
 
-## [Built With](#built-with)
+## Built With
 
 Materialize
 
@@ -49,11 +49,11 @@ Open Food Facts API
 
 
 
-## [Usage](#usage)
+## Usage
 
 
-## [Team](#team)
+## Team
 
 
-## [License](#license)
+## License
 
