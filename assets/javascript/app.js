@@ -33,8 +33,8 @@ $(document).ready(function () {
     $("#search").click(function (e) {
         $(".progress").show();
         e.preventDefault();       
-        $(".foodItem").empty();  
-        $(".no-result").empty();
+        $(".foodItem").empty(); 
+        $(".no-result").empty(); 
         foodName = $("#user-input").val();
         if (foodName !== "") {
             //input is not empty 
@@ -52,12 +52,11 @@ $(document).ready(function () {
                 if (resp.count == 0) {//void response
                     console.log("no result found");
                     // hide the progress bar if no results
-                    let noResultImage = $("<img>").attr("src","assets/images/no-results.png");
-                    noResultImage.addClass("no-result");
-                    
+                    let noResultImage = $("<img>").attr("src","assets/images/no-results.png")
                     $(".no-result").append(noResultImage);
                     $(".progress").hide();
                 } else {
+                   
                     for (var i = 0; i < 10; i++) {
                         //data-persistence
                         // let history = JSON.parse(localStorage.getItem("history"));
@@ -119,6 +118,7 @@ $(document).ready(function () {
                         // hide the progress bar prior to showing results
                         $(".progress").hide();
                         $(".foodItem").append(newLi);
+
                     }
                    
                
@@ -134,9 +134,7 @@ $(document).ready(function () {
     //change icon of li when clicked
     $(document).on("click","li",function(){
        if($(this).attr("class") == "active"){
-        $(".material-icons").text("add_circle_outline");
         $(this).find(".material-icons").text("remove_circle_outline");
-
        }else{
         $(this).find(".material-icons").text("add_circle_outline");
        }
