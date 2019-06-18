@@ -34,6 +34,7 @@ $(document).ready(function () {
         $(".progress").show();
         e.preventDefault();       
         $(".foodItem").empty();  
+        $(".no-result").empty();
         foodName = $("#user-input").val();
         if (foodName !== "") {
             //input is not empty 
@@ -51,11 +52,12 @@ $(document).ready(function () {
                 if (resp.count == 0) {//void response
                     console.log("no result found");
                     // hide the progress bar if no results
-                    let noResultImage = $("<img>").attr("src","assets/images/no-results.png")
-                    $("#results").append(noResultImage);
+                    let noResultImage = $("<img>").attr("src","assets/images/no-results.png");
+                    noResultImage.addClass("no-result");
+                    
+                    $(".no-result").append(noResultImage);
                     $(".progress").hide();
                 } else {
-                   
                     for (var i = 0; i < 10; i++) {
                         //data-persistence
                         // let history = JSON.parse(localStorage.getItem("history"));
@@ -117,7 +119,6 @@ $(document).ready(function () {
                         // hide the progress bar prior to showing results
                         $(".progress").hide();
                         $(".foodItem").append(newLi);
-
                     }
                    
                
