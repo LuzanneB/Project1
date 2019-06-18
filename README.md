@@ -1,3 +1,11 @@
+- [Landing Page](#landing-page)
+- [Demo](#demo)
+- [Built With](#built-with)
+- [Usage](#usage)
+- [Team](#team)
+- [License](#license)
+
+
 # Food Decoder
 
 Independence Day (United States) is around the corner and you know what that means..no not the fireworks..I'm talking about having that **summertime barbecue!** :poultry_leg: :hamburger:
@@ -9,4 +17,43 @@ You are at your local supermarket and what is a barbecue without hot dogs? You h
 As your stream of thoughts guided you through a rabbit hole of questions and, ever so briefly, enter a state of existentialism; you've accepted that a sale is a sale and the festivities must happen. But, what are we putting into our body? Honey is honey and cinnamon is cinnamon, but what is Xanthan gum? How about tert-Butylhydroquinone? The underlying magnitude of this decision could ripple and affect your long term health in future--all because of the choice you make now. In the conciseness with similar sentiments shared in words from a renown food expert and enviromentalist, Joan Gussow:
 
 > As for butter versus margarine, I trust cows more than chemists.
+
+<!-- Add explanation why we came up with app -->
+
+
+## Landing Page
+![Food Decoder screenshot](Project1\assets\images\foodDecodermain.jpg)
+
+
+## Demo
+
+<!-- .gif preview of capabilities and process -->
+
+<!-- Explain how to use it -->
+
+
+## Built With
+
+Materialize
+
+Google Fonts
+
+Font Awesome 
+
+Heroku
+
+JQuery
+
+Open Food Facts API
+
+
+
+
+## Usage
+
+
+## Team
+
+
+## License
 
