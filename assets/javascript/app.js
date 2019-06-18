@@ -25,7 +25,6 @@ $(document).ready(function () {
     //     x.open("GET", newUrl,true);
     //     x.send();
     // }
-
     $("#search").click(function (e) {
         e.preventDefault();
         foodName = $("#user-input").val();
