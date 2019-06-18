@@ -52,3 +52,11 @@ main {
     margin: 20px auto 0 auto;
     position: relative;
 }
+
+.btn-flat {
+    color: #73a37a;
+}
+
+.about-app {
+    color: #73a37a;
+}
