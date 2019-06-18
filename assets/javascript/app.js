@@ -33,7 +33,8 @@ $(document).ready(function () {
     $("#search").click(function (e) {
         $(".progress").show();
         e.preventDefault();       
-        $(".foodItem").empty();  
+        $(".foodItem").empty(); 
+        $(".no-result").empty(); 
         foodName = $("#user-input").val();
         if (foodName !== "") {
             //input is not empty 
@@ -52,7 +53,7 @@ $(document).ready(function () {
                     console.log("no result found");
                     // hide the progress bar if no results
                     let noResultImage = $("<img>").attr("src","assets/images/no-results.png")
-                    $("#results").append(noResultImage);
+                    $(".no-result").append(noResultImage);
                     $(".progress").hide();
                 } else {
                    
@@ -133,9 +134,7 @@ $(document).ready(function () {
     //change icon of li when clicked
     $(document).on("click","li",function(){
        if($(this).attr("class") == "active"){
-        $(".material-icons").text("add_circle_outline");
         $(this).find(".material-icons").text("remove_circle_outline");
-
        }else{
         $(this).find(".material-icons").text("add_circle_outline");
        }
