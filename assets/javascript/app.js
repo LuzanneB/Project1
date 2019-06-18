@@ -73,12 +73,14 @@ $(document).ready(function () {
                         //new header
                         let newHeader = $("<div>");
                         newHeader.addClass("collapsible-header");
-                        //icpon
+                        //icon +
                         let icon = $("<i>");
                         icon.addClass("material-icons");
                         icon.text("add_circle_outline");
+                        //food brand
                         let foodBrand = $("<span>");
                         foodBrand.addClass("brands");
+                        //food name
                         let name = $("<span>");
                         foodBrand.text(food.brands);
                         name.text(" : " + food.product_name);
@@ -128,7 +130,14 @@ $(document).ready(function () {
         }
 
     });
-
+    //change icon of li when clicked
+    $(document).on("click","li",function(){
+       if($(this).attr("class") == "active"){
+        $(this).find(".material-icons").text("remove_circle_outline");
+       }else{
+        $(this).find(".material-icons").text("add_circle_outline");
+       }
+    });
     //pop up modal to show brand info pulled from wiki api
     $(document).on("click",".modal-trigger",function(){
         let key = $(this).attr("value");
