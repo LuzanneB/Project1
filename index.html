@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+s
     <!-- FONT AWESOME -->
     <script src="https://kit.fontawesome.com/623c9b3b2b.js"></script>
 
@@ -47,7 +47,7 @@
         <img class="headerImg responsive-img" src="assets/images/decoder-ring-carrot.png" width="500">
 
         <!-- INPUT BAR -->
-        <form class="searchBar center-align" action="/action_page.php">
+        <form class="searchBar center-align" >
             <input type="text" id="user-input" placeholder="Search product here.." name="search">
             <button class="btn waves-effect waves-light" id="search" type="submit" name="action">Search</button>
         </form>
@@ -56,6 +56,22 @@
         <div class="progress">
             <div class="indeterminate"></div>
         </div>  
+        <!-- MODAL -->
+
+        <!-- Modal Trigger -->
+        <a class="modal-trigger" href="#modal1">Modal</a>
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+          <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+          </div>
+        </div>
+
 
         <!-- SEARCH RESULTS -->
 
@@ -85,10 +101,8 @@
               <h5 class="white-text">About Us</h5>
               <ul>
                 <li><a class="btn-flat tooltipped" data-position="left" 
-                    data-tooltip="Super short bio tweet.<br>
-                    Super short bio tweet.<br> 
-                    Super short bio tweet.">Celisse</a></li>
-                <li><a class="btn-flat tooltipped" data-position="left" 
+                    data-tooltip="Celisse loves cruise ships. Disney World, technology, and her dog, Maui. 🐶">Celisse</a></li>
+                <li><a class="btn-flat tooltipped" data-position="right" 
                     data-tooltip="Super short bio tweet.<br>
                     Super short bio tweet.<br> 
                     Super short bio tweet.">Luzanne</a></li>
@@ -96,7 +110,7 @@
                     data-tooltip="Super short bio tweet.<br>
                     Super short bio tweet.<br> 
                     Super short bio tweet.">Andrew</a></li>
-                <li><a class="btn-flat tooltipped" data-position="left" 
+                <li><a class="btn-flat tooltipped" data-position="right" 
                     data-tooltip="Super short bio tweet.<br>
                     Super short bio tweet.<br> 
                     Super short bio tweet.">Nova</a></li>
