@@ -62,5 +62,29 @@ main {
 }
 
 .progress {
-    margin-top: 35px;
+    margin: 35px auto 0 auto;
+    width: 85%;
+}
+
+#sidenav {
+  height: 100%;
+  width: 18%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  background-color: #c5e1a5;
+}
+
+.card-panel {
+    background-color: #B9D39C;
+}
+
+#results {
+    width: 85%;
+    margin: 20px auto 0 auto;
 }
