@@ -47,12 +47,15 @@ $(document).ready(function () {
                 //get the response
                 console.log(resp);
                 //display doms
+                $(".foodItem").empty();
                 if (resp.count == 0) {//void response
                     console.log("no result found");
                     // hide the progress bar if no results
+                    let noResultImage = $("<img>").attr("src","assets/images/no-results.png")
+                    $("#results").append(noResultImage);
                     $(".progress").hide();
                 } else {
-                    $(".foodItem").empty();
+                   
                     for (var i = 0; i < 10; i++) {
                         //data-persistence
                         // let history = JSON.parse(localStorage.getItem("history"));
@@ -70,12 +73,14 @@ $(document).ready(function () {
                         //new header
                         let newHeader = $("<div>");
                         newHeader.addClass("collapsible-header");
-                        //icpon
+                        //icon +
                         let icon = $("<i>");
                         icon.addClass("material-icons");
                         icon.text("add_circle_outline");
+                        //food brand
                         let foodBrand = $("<span>");
                         foodBrand.addClass("brands");
+                        //food name
                         let name = $("<span>");
                         foodBrand.text(food.brands);
                         name.text(" : " + food.product_name);
@@ -119,14 +124,20 @@ $(document).ready(function () {
               
                     
                 }
-g
             });
             //clear the user input
             $("#user-input").val("");
         }
 
     });
-
+    //change icon of li when clicked
+    $(document).on("click","li",function(){
+       if($(this).attr("class") == "active"){
+        $(this).find(".material-icons").text("remove_circle_outline");
+       }else{
+        $(this).find(".material-icons").text("add_circle_outline");
+       }
+    });
     //pop up modal to show brand info pulled from wiki api
     $(document).on("click",".modal-trigger",function(){
         let key = $(this).attr("value");
@@ -139,8 +150,9 @@ g
             let mark = JSON.stringify(obj).substring(2,4);
             if(mark == -1){//no result//display no result
                 let warning = $("<h4>").text("No Brand Found");
+                let noResult = $("<img>").attr("src","assets/images/no-results.png")
                 $(".modal-content").empty();
-                $(".modal-content").append(warning);
+                $(".modal-content").append(warning,noResult);
             }else{//found and display the 1st search match  hope it works for other items
                
                 let text = JSON.stringify(obj).split(':"')[2];
