@@ -5,13 +5,10 @@ $(document).ready(function () {
     $('.tooltipped').tooltip();
     // initializes collapse
     $('.collapsible').collapsible();
-<<<<<<< HEAD
     // initializes modal
     $('.modal').modal();
-=======
     // hide progress bar by default
     $(".progress").hide();
->>>>>>> master
     // all code must be after this line
 
     var foodName;
