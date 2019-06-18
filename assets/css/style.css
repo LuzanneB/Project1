@@ -52,6 +52,17 @@ main {
     margin: 20px auto 0 auto;
     position: relative;
 }
+<<<<<<< HEAD
+
+.btn-flat {
+    color: #73a37a;
+}
+
+.about-app {
+    color: #73a37a;
+}
+=======
 .progress {
     margin-top: 35px;
 }
+>>>>>>> master
