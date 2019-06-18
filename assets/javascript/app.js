@@ -47,12 +47,15 @@ $(document).ready(function () {
                 //get the response
                 console.log(resp);
                 //display doms
+                $(".foodItem").empty();
                 if (resp.count == 0) {//void response
                     console.log("no result found");
                     // hide the progress bar if no results
+                    let noResultImage = $("<img>").attr("src","assets/images/no-results.png")
+                    $("#results").append(noResultImage);
                     $(".progress").hide();
                 } else {
-                    $(".foodItem").empty();
+                   
                     for (var i = 0; i < 10; i++) {
                         //data-persistence
                         // let history = JSON.parse(localStorage.getItem("history"));
@@ -119,7 +122,6 @@ $(document).ready(function () {
               
                     
                 }
-g
             });
             //clear the user input
             $("#user-input").val("");
@@ -139,8 +141,9 @@ g
             let mark = JSON.stringify(obj).substring(2,4);
             if(mark == -1){//no result//display no result
                 let warning = $("<h4>").text("No Brand Found");
+                let noResult = $("<img>").attr("src","assets/images/no-results.png")
                 $(".modal-content").empty();
-                $(".modal-content").append(warning);
+                $(".modal-content").append(warning,noResult);
             }else{//found and display the 1st search match  hope it works for other items
                
                 let text = JSON.stringify(obj).split(':"')[2];
