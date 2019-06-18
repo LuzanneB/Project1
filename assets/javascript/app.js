@@ -5,9 +5,15 @@ $(document).ready(function () {
     $('.tooltipped').tooltip();
     // initializes collapse
     $('.collapsible').collapsible();
+<<<<<<< HEAD
     // initializes modal
     $('.modal').modal();
+=======
+    // hide progress bar by default
+    $(".progress").hide();
+>>>>>>> master
     // all code must be after this line
+
     var foodName;
     //initial the search button action
     // fix CORS erro with proxy
@@ -28,7 +34,9 @@ $(document).ready(function () {
     //     x.send();
     // }
     $("#search").click(function (e) {
-        e.preventDefault();
+        $(".progress").show();
+        e.preventDefault();       
+        $(".foodItem").empty();  
         foodName = $("#user-input").val();
         if (foodName !== "") {
             //input is not empty 
@@ -44,6 +52,8 @@ $(document).ready(function () {
                 //display doms
                 if (resp.count == 0) {//void response
                     console.log("no result found");
+                    // hide the progress bar if no results
+                    $(".progress").hide();
                 } else {
                     $(".foodItem").empty();
                     for (var i = 0; i < 10; i++) {
@@ -102,12 +112,17 @@ $(document).ready(function () {
                         console.log(newBody);
 
                         newLi.append(newHeader, newBody);
-
+                        // hide the progress bar prior to showing results
+                        $(".progress").hide();
                         $(".foodItem").append(newLi);
 
                     }
+                   
+               
+              
+                    
                 }
-
+g
             });
             //clear the user input
             $("#user-input").val("");
