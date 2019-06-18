@@ -112,7 +112,7 @@ $(document).ready(function () {
               
                     
                 }
-
+g
             });
             //clear the user input
             $("#user-input").val("");
