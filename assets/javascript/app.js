@@ -5,6 +5,8 @@ $(document).ready(function () {
     $('.tooltipped').tooltip();
     // initializes collapse
     $('.collapsible').collapsible();
+    // initializes modal
+    $('.modal').modal();
     // all code must be after this line
     var foodName;
     //initial the search button action
@@ -70,6 +72,11 @@ $(document).ready(function () {
                         let name = $("<span>");
                         foodBrand.text(food.brands);
                         name.text(" : " + food.product_name);
+                        let modalLink = $("<button>");
+                        modalLink.addClass("btn modal-trigger");
+                        modalLink.attr("data-target","modal1");
+                        modalLink.attr("value",food.brands);
+                        modalLink.text("Learn more about "+food.brands);
                         newHeader.append(icon, foodBrand, name);
                         let newBody = $("<div>");
                         newBody.addClass("collapsible-body");
@@ -91,7 +98,7 @@ $(document).ready(function () {
                             newIngreDiv.append(ingreSpan);
                             console.log(ingreSpan);
                         }
-                        newBody.append(newIngreDiv);
+                        newBody.append(newIngreDiv,modalLink);
                         console.log(newBody);
 
                         newLi.append(newHeader, newBody);
@@ -107,15 +114,28 @@ $(document).ready(function () {
         }
 
     });
-    $(document).on("click", ".brands", function () {
-        let key = $(this).text().toLowerCase();
-        console.log(key);
+
+    //pop up modal to show brand info pulled from wiki api
+    $(document).on("click",".modal-trigger",function(){
+        let key = $(this).attr("value");
         $.ajax({
             method: "GET",
-            url: cors_api_url + "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + key + "&format=json"
-        }).then(function (resp) {
-            console.log(resp);
-            //pop up modals
+            //wiki api that returns certain extract of the title
+            url: cors_api_url + "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exlimit=max&explaintext&exintro&titles="+key+"&redirects="
+        }).then(function(resp){
+            let obj = resp.query.pages;
+            let mark = JSON.stringify(obj).substring(2,4);
+            if(mark == -1){//no result//display no result
+                let warning = $("<h4>").text("No Brand Found");
+                $(".modal-content").empty();
+                $(".modal-content").append(warning);
+            }else{//found and display the 1st search match  hope it works for other items
+               
+                let text = JSON.stringify(obj).split(':"')[2];
+                let content = $("<p>").text(text.substring(0,text.length-3));
+                $(".modal-content").empty();
+                $(".modal-content").append(content);
+            }
         });
     });
     //create function to show pop up images
