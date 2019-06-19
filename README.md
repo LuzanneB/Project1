@@ -23,17 +23,19 @@ We came up with our app so we are able to find out what alternative products are
 
 ## Landing Page
 
-![Food Decoder screenshot](foodDecodermain.png)
+![Food Decoder screenshot](assets/images/foodDecodermain.png)
 
 
 ## Demo
 
 <!-- .gif preview of capabilities and process --> 
 
-1. Start the search by typing in the keyword of the product (i.e. ketchup) you are looking for
+1. Start the search by typing in the keyword of the product (i.e. ketchup) you are looking for.
     - Or you could click on an item in the "Top Searched Food" located in the left column
-2. Find the specific brand and product from the list
-3. Click anywhere on the row and it will expand and show details of the product such as the ingredients and provide    a link to the manufacturer to learn more about the company. 
+
+2. Find the specific brand and product from the list.
+
+3. Click anywhere on the row and it will expand and show details of the product such as the ingredients and provide a link to the manufacturer to learn more about the company. 
 
 
 ## Built With
