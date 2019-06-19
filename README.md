@@ -18,18 +18,22 @@ As your stream of thoughts guided you through a rabbit hole of questions and, ev
 
 > As for butter versus margarine, I trust cows more than chemists.
 
-We came up with our app with the idea in mind to have an overview of what products are out there, what is the general make up on said product, and 
+We came up with our app so we are able to find out what alternative products are out there, what said product is made up of, and the company behind the product all in a simple overview. Being able to know what other choices are out there and having awareness of the manufacturers behind them gives us, the consumers, accountability to what we are putting in our body. 
 
 
 ## Landing Page
-![Food Decoder screenshot](assets\images\foodDecodermain.jpg)
+
+![Food Decoder screenshot](.assets/images/foodDecodermain.jpg)
 
 
 ## Demo
 
-<!-- .gif preview of capabilities and process -->
+<!-- .gif preview of capabilities and process --> 
 
-<!-- Explain how to use it -->
+1. Start the search by typing in the keyword of the product (i.e. ketchup) you are looking for
+    - Or you could click on an item in the "Top Searched Food" located in the left column
+2. Find the specific brand and product from the list
+3. Click anywhere on the row and it will expand and show details of the product such as the ingredients and provide    a link to the manufacturer to learn more about the company. 
 
 
 ## Built With
@@ -40,18 +44,20 @@ Google Fonts
 
 Font Awesome 
 
-Heroku
-
 JQuery
 
 Open Food Facts API
 
 MediaWiki API
 
+Animate CSS
+
+Firebase
+
 
 ## Usage
 
-Click [here](https://luzanneb.github.io/Project1/) to get to Food Decoder.
+Click [here](https://luzanneb.github.io/Project1/) to get to the Food Decoder page.
 
 If you have any suggestions or would like to report a bug, feel free to message any of us, in the team section, below! We would love to hear from you :smile:
 
