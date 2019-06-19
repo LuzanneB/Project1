@@ -12,6 +12,19 @@ $(document).ready(function () {
     //initializes tabs
     var elem = document.querySelector('.tabs'); var instance = M.Tabs.init(elem, {});
 
+    //initialize firebase
+    var firebaseConfig = {
+        apiKey: "AIzaSyBToTk-H6xDM9KubswcX13jz5MJWjmbKhE",
+        authDomain: "food-decoder.firebaseapp.com",
+        databaseURL: "https://food-decoder.firebaseio.com",
+        projectId: "food-decoder",
+        storageBucket: "",
+        messagingSenderId: "1085307526367",
+        appId: "1:1085307526367:web:0c3e6fe52623e883"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      var database = firebase.database();
     // all code must be after this line
 
     var foodName;
