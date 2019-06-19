@@ -18,11 +18,11 @@ As your stream of thoughts guided you through a rabbit hole of questions and, ev
 
 > As for butter versus margarine, I trust cows more than chemists.
 
-<!-- Add explanation why we came up with app -->
+We came up with our app with the idea in mind to have an overview of what products are out there, what is the general make up on said product, and 
 
 
 ## Landing Page
-![Food Decoder screenshot](Project1\assets\images\foodDecodermain.jpg)
+![Food Decoder screenshot](assets\images\foodDecodermain.jpg)
 
 
 ## Demo
@@ -46,14 +46,27 @@ JQuery
 
 Open Food Facts API
 
-
+MediaWiki API
 
 
 ## Usage
 
+Click [here](https://luzanneb.github.io/Project1/) to get to Food Decoder.
+
+If you have any suggestions or would like to report a bug, feel free to message any of us, in the team section, below! We would love to hear from you :smile:
 
 ## Team
 
+[Nova](https://github.com/Nova-Xue)
+
+[Celisse](https://github.com/CelisseD)
+
+[Luzanne](https://github.com/LuzanneB)
+
+[Andrew](https://github.com/ahok89)
+
 
 ## License
+
+© 2019 Copyright C.L.A.N.
 

@@ -110,3 +110,6 @@ main {
 .tabs .indicator {
     background-color:#000;
 } /*Color of underline*/
+.food-image{
+    max-width: 100px
+}
