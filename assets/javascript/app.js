@@ -9,7 +9,10 @@ $(document).ready(function () {
     $('.modal').modal();
     // hide progress bar by default
     $(".progress").hide();
-    //initializ firebase
+    //initializes tabs
+    var elem = document.querySelector('.tabs'); var instance = M.Tabs.init(elem, {});
+
+    //initialize firebase
     var firebaseConfig = {
         apiKey: "AIzaSyBToTk-H6xDM9KubswcX13jz5MJWjmbKhE",
         authDomain: "food-decoder.firebaseapp.com",
