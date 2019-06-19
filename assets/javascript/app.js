@@ -12,6 +12,7 @@ $(document).ready(function () {
     // all code must be after this line
 
     var foodName;
+    var foodObj;
     //initial the search button action
     // fix CORS erro with proxy
     var cors_api_url = "https://cors-anywhere.herokuapp.com/";
@@ -30,11 +31,9 @@ $(document).ready(function () {
     //     x.open("GET", newUrl,true);
     //     x.send();
     // }
-    $("#search").click(function (e) {
+    function displayItems(input){
+        foodName = input;
         $(".progress").show();
-        e.preventDefault();       
-        $(".foodItem").empty();  
-        foodName = $("#user-input").val();
         if (foodName !== "") {
             //input is not empty 
             //doCORSRequest(foodName);
@@ -47,12 +46,13 @@ $(document).ready(function () {
                 //get the response
                 console.log(resp);
                 //display doms
+                foodObj = resp;
                 $(".foodItem").empty();
                 if (resp.count == 0) {//void response
-                    console.log("no result found");
+                    //console.log("no result found");
                     // hide the progress bar if no results
                     let noResultImage = $("<img>").attr("src","assets/images/no-results.png")
-                    $("#results").append(noResultImage);
+                    $(".no-result").append(noResultImage);
                     $(".progress").hide();
                 } else {
                    
@@ -84,6 +84,7 @@ $(document).ready(function () {
                         let name = $("<span>");
                         foodBrand.text(food.brands);
                         name.text(" : " + food.product_name);
+                        //modal button
                         let modalLink = $("<button>");
                         modalLink.addClass("btn modal-trigger");
                         modalLink.attr("data-target","modal1");
@@ -92,16 +93,27 @@ $(document).ready(function () {
                         newHeader.append(icon, foodBrand, name);
                         let newBody = $("<div>");
                         newBody.addClass("collapsible-body");
+                        //foodimage
                         let foodImage = $("<img>");//not styled
+                        foodImage.attr("value",i);
+                        foodImage.addClass("food-image");
+                        //ingredient image
+                        let ingreImage = $("<img>");
+                        ingreImage.addClass("ingre");
+                        ingreImage.attr("id","ingre"+i);
+                        ingreImage.hide();
                         //img and without image
                         if (food.image_front_thumb_url) {
                             foodImage.attr("src", food.image_front_thumb_url);
+                            ingreImage.attr("src",food.image_ingredients_url)
                         } else {
                             foodImage.attr("src", "./assets/images/no-image-available.png");
                             foodImage.attr("alt", "No Image Available");
+                            ingreImage.attr("src","./assets/images/no-image-available.png")
                         }
-                        newBody.append(foodImage);
-                        let newIngreDiv = $("<div>");
+                        newBody.append(foodImage,ingreImage);
+                        let newIngreDiv = $("<div>").addClass("row");
+                        
                         //loop through ingredients array
                         for (var j = 0; j < food.ingredients_original_tags.length; j++) {
                             let ingreArr = food.ingredients_original_tags[j].split(":");
@@ -110,10 +122,16 @@ $(document).ready(function () {
                             newIngreDiv.append(ingreSpan);
                             console.log(ingreSpan);
                         }
-                        newBody.append(newIngreDiv,modalLink);
+                        let newRow = $("<div>").addClass("row");
+                        let newColFood =$("<div>").addClass("col");
+                        let newColIngre =$("<div>").addClass("col");
+                        newColFood.append(foodImage);
+                        newColIngre.append(ingreImage);
+                        newRow.append(newColFood,newColIngre);
+                        newBody.append(newRow,newIngreDiv);
                         console.log(newBody);
 
-                        newLi.append(newHeader, newBody);
+                        newLi.append(newHeader,newBody);
                         // hide the progress bar prior to showing results
                         $(".progress").hide();
                         $(".foodItem").append(newLi);
@@ -128,6 +146,14 @@ $(document).ready(function () {
             //clear the user input
             $("#user-input").val("");
         }
+    }
+    $("#search").click(function (e) {
+        $(".progress").show();
+        e.preventDefault();       
+        $(".foodItem").empty(); 
+        $(".no-result").empty(); 
+        foodName = $("#user-input").val();
+        displayItems(foodName);
 
     });
     //change icon of li when clicked
@@ -135,7 +161,6 @@ $(document).ready(function () {
        if($(this).attr("class") == "active"){
         $(".material-icons").text("add_circle_outline");
         $(this).find(".material-icons").text("remove_circle_outline");
-
        }else{
         $(this).find(".material-icons").text("add_circle_outline");
        }
@@ -164,19 +189,24 @@ $(document).ready(function () {
             }
         });
     });
-    //create function to show pop up images
-    //$(document).on("click",".img",function(){
-    //modal.img.attr("src",ingredientsImage);
-    //});
-    //create function for pop up modals 
-    // $(document).on("click","",function(){
+    //create function to hide pop up images
+    $(document).on("mouseleave",".food-image",function(){
+            //mouse leave hide the image
+            //hide all
+            $(".ingre").hide();
 
-    // });
-    //  
-    //create function to link ingredients text to wiki
-    // $(document).on("click","(the content in modals)",function(){
+    });
+    //show ingredients image when mouse enter
+    $(document).on("mouseenter",".food-image",function(){
+                //mouse enter img and display the image
+                let index = $(this).attr("value");
+                $("#ingre"+index).show();
 
-    // });
-
+    });
+    //create onclick action for top search 
+    $(document).on("click",".collection-item",function(){
+        foodName = $(this).text();
+        displayItems(foodName);
+    });
     // closing document ready...all code must be above this 
 });
