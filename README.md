@@ -40,11 +40,15 @@ We came up with our app so we are able to find out what alternative products are
 
 ## Built With
 
+HTML/CSS
+
 Materialize
 
 Google Fonts
 
 Font Awesome 
+
+Javascript
 
 JQuery
 
@@ -52,7 +56,7 @@ Open Food Facts API
 
 MediaWiki API
 
-Animate CSS
+Animate.css
 
 Firebase
 
