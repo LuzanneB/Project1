@@ -9,6 +9,9 @@ $(document).ready(function () {
     $('.modal').modal();
     // hide progress bar by default
     $(".progress").hide();
+    //initializes tabs
+    var elem = document.querySelector('.tabs'); var instance = M.Tabs.init(elem, {});
+
     // all code must be after this line
 
     var foodName;
