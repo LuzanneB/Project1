@@ -123,3 +123,9 @@ main {
 .collapsible-header:hover {
     background-color: #dddddd !important;
 }
+
+.collapsible {
+    border: none;
+    
+
+}
