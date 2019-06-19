@@ -23,7 +23,7 @@ We came up with our app so we are able to find out what alternative products are
 
 ## Landing Page
 
-![Food Decoder screenshot](..assets/images/foodDecodermain.jpg)
+![Food Decoder screenshot](foodDecodermain.png)
 
 
 ## Demo
