@@ -21,10 +21,10 @@ $(document).ready(function () {
         storageBucket: "",
         messagingSenderId: "1085307526367",
         appId: "1:1085307526367:web:0c3e6fe52623e883"
-      };
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-      var database = firebase.database();
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    var database = firebase.database();
     // all code must be after this line
 
     var foodName;
@@ -47,18 +47,114 @@ $(document).ready(function () {
     //     x.open("GET", newUrl,true);
     //     x.send();
     // }
+    var itemsHistory;
+    database.ref().on("value", function (snap) {
+        //get data from database
+            if(snap.val()!= null){
+                itemsHistory = snap.val().history;
+            }else{
+                itemsHistory = [];
+            }
+        //console.log("history from value" + itemsHistory);
+        //display and populate the trending
+        //limits?
+    });
     function searchHisory(his) {
-        let item = his;
-        //data-persistence
-        let history = JSON.parse(localStorage.getItem("history"));
-        if (!history){
-            history=[];
+        let flag = 0;
+        if(itemsHistory.length == 0){  //nothing in the list first push
+            itemsHistory.push({
+                [his]: 1
+            });
+        }else{// list exist //update
+        //loop 
+        for(var i =0;i<itemsHistory.length;i++){
+                //find the key
+            if (itemsHistory[i].hasOwnProperty(his)) {//find the key-value
+                    //console.log("update");
+                    itemsHistory[i][his] += 1;
+                    
+                   // console.log(itemsHistory[i]);
+                    flag++;
+                }
+            }
+            console.log(flag);
+            if(flag == 0){//no old key fonud //new search insert
+                console.log("in insert");
+                
+                itemsHistory.push({
+                    [his]: 1
+                });
+            }
+    }
+
+        database.ref().set({
+            history: itemsHistory
+        });
+    }
+    //display the most seached item by count #
+    function displayMostSearch(){
+        $(".most-searched").empty();  
+        let newAHead = $("<a>");
+            newAHead.text("Most searched : ");
+        $(".most-searched").append(newAHead)
+        let maxCount = 0;
+        let maxSearch ="";
+            for(var i=0;i<itemsHistory.length;i++){//find the max
+                let obj = itemsHistory[i];
+                //console.log(JSON.stringify(obj));//{"Pancakes":1}
+                let temp = JSON.stringify(obj).split(":")[1];
+               // console.log(temp);
+               //get key
+               let item = JSON.stringify(obj).split(":")[0];
+                item = item.substring(2,item.length-1);
+               // console.log(item);
+               //get value
+                count = temp.substring(0,temp.length-1);
+               // console.log("2222:"+temp);
+                if(maxCount< parseInt(temp)){
+                    maxCount = temp;
+                    maxSearch = item.charAt(0).toUpperCase() + item.slice(1);
+                }   
+            }
+            //display this item
+            //<a href="#!" class="collection-item">Seaweed</a>
+            let newA = $("<a>").addClass("collection-item");
+            newA.attr("href","#!");
+            newA.text(maxSearch);
+            $(".most-searched").append(newA);    
+    }
+    //display most recent searched items 
+    function displayRecentSearch(){
+        $(".recent-search").empty();  
+        let newAHead = $("<a>");
+        newAHead.text("Most recent search : "); 
+        $(".recent-search").append(newAHead)
+        if(itemsHistory.length>5){
+            for(var i =0;i<5;i++){
+                let obj = itemsHistory[itemsHistory.length-1-i];
+               //get key
+               let item = JSON.stringify(obj).split(":")[0];
+                item = item.substring(2,item.length-1);
+                item = item.charAt(0).toUpperCase() + item.slice(1);
+            let newA = $("<a>").addClass("collection-item");
+            newA.attr("href","#!");
+            newA.text(item);
+            $(".recent-search").append(newA); 
+            }
+        }else{
+            for(var i =0;i<itemsHistory.length;i++){
+                let obj = itemsHistory[i];
+               //get key
+               let item = JSON.stringify(obj).split(":")[0];
+                item = item.substring(2,item.length-1);
+                item = item.charAt(0).toUpperCase() + item.slice(1);
+            let newA = $("<a>").addClass("collection-item");
+            newA.attr("href","#!");
+            newA.text(item);
+            $(".recent-search").append(newA); 
+            }
         }
-        if(history.indexOf(item) == -1){
-            history.push(foodName);
-        }
-        
-        localStorage.setItem("history",JSON.stringify(history));
+            
     }
     function displayItems(input) {
         foodName = input;
@@ -71,7 +167,7 @@ $(document).ready(function () {
                 //use ajax to require json from cors proxy 
                 method: "GET",
                 url: cors_api_url + url + foodName + "/1.json"
-            }).then(function (resp) {
+            }).then(function (resp) { 
                 //get the response
                 //console.log(resp);
                 //display doms
@@ -85,12 +181,9 @@ $(document).ready(function () {
                     $(".progress").hide();
                 } else {
                     searchHisory(foodName);
-                    console.log(localStorage.getItem("history"));
-                    
                     for (var i = 0; i < 10; i++) {
-
                         let food = resp.products[i];
-                        if (food.ingredients_original_tags == "") {
+                        if (food == undefined || food.ingredients_original_tags == "") {
                             continue;
                         }
                         //new li 
@@ -154,7 +247,7 @@ $(document).ready(function () {
                         newColFood.append(foodImage);
                         newColIngre.append(ingreImage);
                         newRow.append(newColFood, newColIngre);
-                        newBody.append(newRow, newIngreDiv,modalLink);
+                        newBody.append(newRow, newIngreDiv, modalLink);
                         //console.log(newBody);
 
                         newLi.append(newHeader, newBody);
@@ -163,15 +256,14 @@ $(document).ready(function () {
                         $(".foodItem").append(newLi);
 
                     }
-
-
-
-
                 }
             });
             //clear the user input
             $("#user-input").val("");
+        } else {//nothing from input
+            $(".progress").hide();
         }
+        
     }
     $("#search").click(function (e) {
         $(".progress").show();
@@ -180,7 +272,8 @@ $(document).ready(function () {
         $(".no-result").empty();
         foodName = $("#user-input").val();
         displayItems(foodName);
-
+        displayMostSearch();
+        displayRecentSearch();
     });
     //change icon of li when clicked
     $(document).on("click", "li", function () {
@@ -233,6 +326,8 @@ $(document).ready(function () {
     $(document).on("click", ".collection-item", function () {
         foodName = $(this).text();
         displayItems(foodName);
+        displayMostSearch();
+        displayRecentSearch();
     });
     // closing document ready...all code must be above this 
 });
