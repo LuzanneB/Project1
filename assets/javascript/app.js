@@ -9,7 +9,10 @@ $(document).ready(function () {
     $('.modal').modal();
     // hide progress bar by default
     $(".progress").hide();
-    //initializ firebase
+    //initializes tabs
+    var elem = document.querySelector('.tabs'); var instance = M.Tabs.init(elem, {});
+
+    //initialize firebase
     var firebaseConfig = {
         apiKey: "AIzaSyBToTk-H6xDM9KubswcX13jz5MJWjmbKhE",
         authDomain: "food-decoder.firebaseapp.com",
@@ -201,7 +204,7 @@ $(document).ready(function () {
                         name.text(" : " + food.product_name);
                         //modal button
                         let modalLink = $("<button>");
-                        modalLink.addClass("btn modal-trigger");
+                        modalLink.addClass("btn modal-trigger light-green waves-effect waves-light");
                         modalLink.attr("data-target", "modal1");
                         modalLink.attr("value", food.brands);
                         modalLink.text("Learn more about " + food.brands);
