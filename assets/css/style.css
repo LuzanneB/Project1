@@ -91,6 +91,7 @@ main {
 
 .collection-item {
     color: #558b2f !important;
+    background-color: whitesmoke;
 }
 
 .tabs .tab a{
@@ -110,6 +111,15 @@ main {
 .tabs .indicator {
     background-color:#000;
 } /*Color of underline*/
-.food-image{
+
+.food-image {
     max-width: 100px
+}
+
+.collapsible-header {
+    color: #558b2f !important;
+}
+
+.collapsible-header:hover {
+    background-color: #dddddd !important;
 }

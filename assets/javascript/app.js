@@ -111,7 +111,7 @@ $(document).ready(function () {
                         name.text(" : " + food.product_name);
                         //modal button
                         let modalLink = $("<button>");
-                        modalLink.addClass("btn modal-trigger");
+                        modalLink.addClass("btn modal-trigger light-green waves-effect waves-light");
                         modalLink.attr("data-target", "modal1");
                         modalLink.attr("value", food.brands);
                         modalLink.text("Learn more about " + food.brands);
