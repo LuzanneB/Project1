@@ -12,6 +12,7 @@ $(document).ready(function () {
     // all code must be after this line
 
     var foodName;
+    var foodObj;
     //initial the search button action
     // fix CORS erro with proxy
     var cors_api_url = "https://cors-anywhere.herokuapp.com/";
@@ -46,11 +47,12 @@ $(document).ready(function () {
                 url: cors_api_url + url + foodName + "/1.json"
             }).then(function (resp) {
                 //get the response
-                console.log(resp);
+                //console.log(resp);
                 //display doms
+                foodObj = resp;
                 $(".foodItem").empty();
                 if (resp.count == 0) {//void response
-                    console.log("no result found");
+                    //console.log("no result found");
                     // hide the progress bar if no results
                     let noResultImage = $("<img>").attr("src","assets/images/no-results.png");
                     noResultImage.addClass("no-result");
@@ -86,6 +88,7 @@ $(document).ready(function () {
                         let name = $("<span>");
                         foodBrand.text(food.brands);
                         name.text(" : " + food.product_name);
+                        //modal button
                         let modalLink = $("<button>");
                         modalLink.addClass("btn modal-trigger");
                         modalLink.attr("data-target","modal1");
@@ -94,26 +97,43 @@ $(document).ready(function () {
                         newHeader.append(icon, foodBrand, name);
                         let newBody = $("<div>");
                         newBody.addClass("collapsible-body");
+                        //foodimage
                         let foodImage = $("<img>");//not styled
+                        foodImage.attr("value",i);
+                        foodImage.addClass("food-image");
+                        //ingredient image
+                        let ingreImage = $("<img>");
+                        ingreImage.addClass("ingre");
+                        ingreImage.attr("id","ingre"+i);
+                        ingreImage.hide();
                         //img and without image
                         if (food.image_front_thumb_url) {
                             foodImage.attr("src", food.image_front_thumb_url);
+                            ingreImage.attr("src",food.image_ingredients_url)
                         } else {
                             foodImage.attr("src", "./assets/images/no-image-available.png");
                             foodImage.attr("alt", "No Image Available");
+                            ingreImage.attr("src","./assets/images/no-image-available.png")
                         }
-                        newBody.append(foodImage);
-                        let newIngreDiv = $("<div>");
+                        newBody.append(foodImage,ingreImage);
+                        let newIngreDiv = $("<div>").addClass("row");
+                        
                         //loop through ingredients array
                         for (var j = 0; j < food.ingredients_original_tags.length; j++) {
                             let ingreArr = food.ingredients_original_tags[j].split(":");
                             let ingreSpan = $("<span>");
                             ingreSpan.text(ingreArr[1] + "|");
                             newIngreDiv.append(ingreSpan);
-                            console.log(ingreSpan);
+                            //console.log(ingreSpan);
                         }
-                        newBody.append(newIngreDiv,modalLink);
-                        console.log(newBody);
+                        let newRow = $("<div>").addClass("row");
+                        let newColFood =$("<div>").addClass("col");
+                        let newColIngre =$("<div>").addClass("col");
+                        newColFood.append(foodImage);
+                        newColIngre.append(ingreImage);
+                        newRow.append(newColFood,newColIngre);
+                        newBody.append(newRow,newIngreDiv);
+                        //console.log(newBody);
 
                         newLi.append(newHeader, newBody);
                         // hide the progress bar prior to showing results
@@ -166,9 +186,18 @@ $(document).ready(function () {
         });
     });
     //create function to show pop up images
-    //$(document).on("click",".img",function(){
-    //modal.img.attr("src",ingredientsImage);
-    //});
+    $(document).on("mouseleave",".food-image",function(){
+            //mouse leave hide the image
+            //hide all
+            $(".ingre").hide();
+
+    });
+    $(document).on("mouseenter",".food-image",function(){
+                //mouse enter img and display the image
+                let index = $(this).attr("value");
+                $("#ingre"+index).show();
+
+    });
     //create function for pop up modals 
     // $(document).on("click","",function(){
 
