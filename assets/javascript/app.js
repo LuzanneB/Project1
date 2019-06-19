@@ -31,12 +31,9 @@ $(document).ready(function () {
     //     x.open("GET", newUrl,true);
     //     x.send();
     // }
-    $("#search").click(function (e) {
+    function displayItems(input){
+        foodName = input;
         $(".progress").show();
-        e.preventDefault();       
-        $(".foodItem").empty(); 
-        $(".no-result").empty(); 
-        foodName = $("#user-input").val();
         if (foodName !== "") {
             //input is not empty 
             //doCORSRequest(foodName);
@@ -47,7 +44,7 @@ $(document).ready(function () {
                 url: cors_api_url + url + foodName + "/1.json"
             }).then(function (resp) {
                 //get the response
-                //console.log(resp);
+                console.log(resp);
                 //display doms
                 foodObj = resp;
                 $(".foodItem").empty();
@@ -123,7 +120,7 @@ $(document).ready(function () {
                             let ingreSpan = $("<span>");
                             ingreSpan.text(ingreArr[1] + "|");
                             newIngreDiv.append(ingreSpan);
-                            //console.log(ingreSpan);
+                            console.log(ingreSpan);
                         }
                         let newRow = $("<div>").addClass("row");
                         let newColFood =$("<div>").addClass("col");
@@ -132,9 +129,9 @@ $(document).ready(function () {
                         newColIngre.append(ingreImage);
                         newRow.append(newColFood,newColIngre);
                         newBody.append(newRow,newIngreDiv);
-                        //console.log(newBody);
+                        console.log(newBody);
 
-                        newLi.append(newHeader, newBody);
+                        newLi.append(newHeader,newBody);
                         // hide the progress bar prior to showing results
                         $(".progress").hide();
                         $(".foodItem").append(newLi);
@@ -149,11 +146,20 @@ $(document).ready(function () {
             //clear the user input
             $("#user-input").val("");
         }
+    }
+    $("#search").click(function (e) {
+        $(".progress").show();
+        e.preventDefault();       
+        $(".foodItem").empty(); 
+        $(".no-result").empty(); 
+        foodName = $("#user-input").val();
+        displayItems(foodName);
 
     });
     //change icon of li when clicked
     $(document).on("click","li",function(){
        if($(this).attr("class") == "active"){
+        $(".material-icons").text("add_circle_outline");
         $(this).find(".material-icons").text("remove_circle_outline");
        }else{
         $(this).find(".material-icons").text("add_circle_outline");
@@ -183,28 +189,24 @@ $(document).ready(function () {
             }
         });
     });
-    //create function to show pop up images
+    //create function to hide pop up images
     $(document).on("mouseleave",".food-image",function(){
             //mouse leave hide the image
             //hide all
             $(".ingre").hide();
 
     });
+    //show ingredients image when mouse enter
     $(document).on("mouseenter",".food-image",function(){
                 //mouse enter img and display the image
                 let index = $(this).attr("value");
                 $("#ingre"+index).show();
 
     });
-    //create function for pop up modals 
-    // $(document).on("click","",function(){
-
-    // });
-    //  
-    //create function to link ingredients text to wiki
-    // $(document).on("click","(the content in modals)",function(){
-
-    // });
-
+    //create onclick action for top search 
+    $(document).on("click",".collection-item",function(){
+        foodName = $(this).text();
+        displayItems(foodName);
+    });
     // closing document ready...all code must be above this 
 });
