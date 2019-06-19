@@ -88,3 +88,6 @@ main {
     width: 85%;
     margin: 20px auto 0 auto;
 }
+.food-image{
+    max-width: 100px
+}
