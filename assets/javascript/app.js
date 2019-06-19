@@ -118,7 +118,8 @@ $(document).ready(function () {
                         } else {
                             foodImage.attr("src", "./assets/images/no-image-available.png");
                             foodImage.attr("alt", "No Image Available");
-                            ingreImage.attr("src", "./assets/images/no-image-available.png")
+                            ingreImage.attr("src", "./assets/images/no-image-available.png");
+                            ingreImage.css("max-width", "300px");
                         }
                         newBody.append(foodImage, ingreImage);
                         let newIngreDiv = $("<div>").addClass("row");
