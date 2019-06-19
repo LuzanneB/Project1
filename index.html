@@ -29,7 +29,10 @@
 
   <!-- LINK TO EXTERNAL STYLESHEET -->
   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-
+  <!-- INITIALIZE FIREBASE DATABASE -->
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+  <!-- FIREBASE DATABASE REFERENCE -->
+  <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-database.js"></script>
   <title>Food Decoder</title>
 
 
@@ -50,10 +53,10 @@
                 <span class="white-text">Food Decoder is an app that helps people make informed choices about what foods they want to consume. Using the search feature, enter a food type or brand, and it will return information about Ingredients, Nutritional Values, and more. Treat yourself well, Food Decoder is here to help!</span>
               </div>
 
+              <h5 class="white-text">Top Searched Foods</h5>
               <div class="collection">
-                  <h5 class="white-text">Top Searched Foods</h5>
                   <a href="#!" class="collection-item">Seaweed</a>
-                  <a href="#!" class="collection-item active">Non-Dairy Milk</a>
+                  <a href="#!" class="collection-item">Non-Dairy Milk</a>
                   <a href="#!" class="collection-item">Quinoa</a>
                   <a href="#!" class="collection-item">Hummus</a>
                   <a href="#!" class="collection-item">Breakfast</a>
@@ -62,8 +65,31 @@
                   <a href="#!" class="collection-item">Doughnuts</a>
                 </div>
 
+  <h5 class="white-text">About C.L.A.N.</h5>
+  <div class="card">
+    <div class="card-content">
+      <p>Food Decoder was built by Team C.L.A.N. Click below to learn more about each member of our team.</p>
+    </div>
+    <div class="card-tabs">
+      <ul class="tabs tabs-fixed-width">
+        <li class="tab"><a class="light-green-text" href="#celisse">C</a></li>
+        <li class="tab"><a class="light-green-text" href="#luzanne">L</a></li>
+        <li class="tab"><a class="light-green-text" href="#andrew">A</a></li>
+        <li class="tab"><a class="light-green-text" href="#nova">N</a></li>
+      </ul>
+    </div>
+    <div class="card-content grey lighten-4">
+      <div id="celisse"><h5>Celisse</h5>Loves cruise ships. Disney World, technology, and her dog, Maui. 🐶</div>
+      <div id="luzanne"><h5>Luzanne</h5>Test 2</div>
+      <div id="andrew"><h5>Andrew</h5>Left tee on the right side. Pizza is the greatest pie</div>
+      <div id="nova"><h5>Nova</h5>Test 3</div>
+    </div>
+  </div>
+
           </div>
       </div>
+      
+
 
       <!-- PAGE CONTENT GOES HERE -->
         <div class="col s9">
