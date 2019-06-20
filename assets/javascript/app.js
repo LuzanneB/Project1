@@ -55,6 +55,8 @@ $(document).ready(function () {
             }else{
                 itemsHistory = [];
             }
+            displayMostSearch();
+            displayRecentSearch();
         //console.log("history from value" + itemsHistory);
         //display and populate the trending
         //limits?
