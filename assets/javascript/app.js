@@ -326,10 +326,9 @@ $(document).ready(function () {
     });
     //create onclick action for top search 
     $(document).on("click", ".collection-item", function () {
+        $(".no-result").empty();
         foodName = $(this).text();
         displayItems(foodName);
-        displayMostSearch();
-        displayRecentSearch();
     });
     // closing document ready...all code must be above this 
 });
