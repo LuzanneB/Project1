@@ -94,9 +94,9 @@ $(document).ready(function () {
     //display the most seached item by count #
     function displayMostSearch(){
         $(".most-searched").empty();  
-        let newAHead = $("<a>");
-            newAHead.text("Most searched : ");
-        $(".most-searched").append(newAHead)
+        // let newAHead = $("<a>");
+            // newAHead.text("Most searched : ");
+        // $(".most-searched").append(newAHead)
         let maxCount = 0;
         let maxSearch ="";
             for(var i=0;i<itemsHistory.length;i++){//find the max
