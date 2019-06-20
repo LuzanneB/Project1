@@ -127,7 +127,7 @@ $(document).ready(function () {
     function displayRecentSearch(){
         $(".recent-search").empty();  
         let newAHead = $("<a>");
-        newAHead.text("Most recent search : "); 
+        // newAHead.text("Most recent search : "); 
         $(".recent-search").append(newAHead)
         if(itemsHistory.length>5){
             for(var i =0;i<5;i++){
