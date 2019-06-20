@@ -28,7 +28,9 @@ We came up with our app so we are able to find out what alternative products are
 
 ## Demo
 
-<!-- .gif preview of capabilities and process --> 
+![Food Decoder demo](assets/images/demo1.gif)
+
+![Food Decoder demo](assets/images/demo2.gif)
 
 1. Start the search by typing in the keyword of the product (i.e. ketchup) you are looking for.
     - Or you could click on an item in the "Top Searched Food" located in the left column
@@ -40,25 +42,25 @@ We came up with our app so we are able to find out what alternative products are
 
 ## Built With
 
-HTML/CSS
+- HTML/CSS
 
-Materialize
+- Materialize
 
-Google Fonts
+- Google Fonts
 
-Font Awesome 
+- Font Awesome 
 
-Javascript
+- Javascript
 
-JQuery
+- JQuery
 
-Open Food Facts API
+- Open Food Facts API
 
-MediaWiki API
+- MediaWiki API
 
-Animate.css
+- Animate.css
 
-Firebase
+- Firebase
 
 
 ## Usage
